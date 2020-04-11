@@ -20,10 +20,9 @@ let shortestDistanceNode = (distances, visited) => {
 	return shortest;
 };
 
+// function that returns the minimum distance and path to reach the end
 let findShortestPath = (graph, startNode, endNode) => {
 	// track the shortest distance to reach each node
-
-	// establish object for recording distances from the start node
 	let distances = {};
 	distances[endNode] = "Infinity";
 	distances = Object.assign(distances, graph[startNode]);
@@ -37,40 +36,33 @@ let findShortestPath = (graph, startNode, endNode) => {
 	// track nodes that have already been visited
 	let visited = [];
 
-	// find the nearest node
 	let node = shortestDistanceNode(distances, visited);
 
-	// for that node
 	while (node) {
-		// find its child nodes
 		let distance = distances[node];
 		let children = graph[node];
-		// for each of those child nodes
-		for (let child in children) {
-			// make sure each child node is not the start node
-			if (String(child) === String(startNode)) {
-				continue;
+		for (let n in children) {
+			if (String(n) === String(startNode)) {
+				console.log("don't return to the start node! 🙅");
 			} else {
-				// save the distance from the start node to the child node
-				let newdistance = distance + children[child];
-				// if there's no recorded distance from the start node to the child node in the distances object
-				// or if the recorded distance is shorter than the previously stored distance from the start node to the child node
-				// save the distance to the object
-				// record the path
-				if (!distances[child] || distances[child] > newdistance) {
-					distances[child] = newdistance;
-					parents[child] = node;
+				console.log("startNode: " + startNode);
+				console.log("distance from node " + n + " to node " + node + ")");
+				console.log("previous distance: " + distances[n]);
+				let newdistance = distance + children[n];
+				console.log("new distance: " + newdistance);
+				if (!distances[n] || distances[n] > newdistance) {
+					distances[n] = newdistance;
+					parents[n] = node;
+					console.log("distance + parents updated");
+				} else {
+					console.log("a shorter path already exists");
 				}
 			}
 		}
-		// move the node to the visited set
 		visited.push(node);
-		// move to the nearest neighbor node
 		node = shortestDistanceNode(distances, visited);
 	}
 
-	// using the stored paths from start node to end node
-	// record the shortest path
 	let shortestPath = [endNode];
 	let parent = parents[endNode];
 	while (parent) {
@@ -79,7 +71,6 @@ let findShortestPath = (graph, startNode, endNode) => {
 	}
 	shortestPath.reverse();
 
-	// return the shortest path from start node to end node & its distance
 	let results = {
 		distance: distances[endNode],
 		path: shortestPath,

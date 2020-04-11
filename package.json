@@ -1,26 +1,28 @@
 {
-  "name": "shortest-path",
-  "version": "1.0.0",
-  "description": "",
-  "main": "shortestPath.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/noamsauerutley/shortest-path.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/noamsauerutley/shortest-path/issues"
-  },
-  "homepage": "https://github.com/noamsauerutley/shortest-path#readme",
-  "dependencies": {
-    "jest": "^25.2.3"
-  }
+	"name": "shortest-path",
+	"version": "1.0.0",
+	"description": "",
+	"main": "shortestPath.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "jest",
+		"start": "nodemon tree.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/noamsauerutley/shortest-path.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/noamsauerutley/shortest-path/issues"
+	},
+	"homepage": "https://github.com/noamsauerutley/shortest-path#readme",
+	"dependencies": {
+		"jest": "^25.2.3",
+		"nodemon": "^2.0.3"
+	}
 }
