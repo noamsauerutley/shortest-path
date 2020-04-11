@@ -21,8 +21,6 @@ let shortestDistanceNode = (distances, visited) => {
 };
 
 let findShortestPath = (graph, startNode, endNode) => {
-	// track the shortest distance to reach each node
-
 	// establish object for recording distances from the start node
 	let distances = {};
 	distances[endNode] = "Infinity";
@@ -42,7 +40,7 @@ let findShortestPath = (graph, startNode, endNode) => {
 
 	// for that node
 	while (node) {
-		// find its child nodes
+		// find its distance from the start node & its child nodes
 		let distance = distances[node];
 		let children = graph[node];
 		// for each of those child nodes
@@ -87,7 +85,3 @@ let findShortestPath = (graph, startNode, endNode) => {
 
 	return results;
 };
-
-//console.log(findShortestPath(graph, "start", "end"));
-//console.log(findShortestPath(graph, "A", "B"));
-//console.log(findShortestPath(graph, "A", "start"));
