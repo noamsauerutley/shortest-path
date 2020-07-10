@@ -84,3 +84,5 @@ const findShortestPathWithLogs = (graph, startNode, endNode) => {
 
 	return results;
 };
+
+module.exports = findShortestPathWithLogs;
