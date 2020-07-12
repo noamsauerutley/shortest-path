@@ -1,13 +1,4 @@
-let graph = {
-	start: { A: 5, B: 2 },
-	A: { start: 1, C: 4, D: 2 },
-	B: { A: 8, D: 7 },
-	C: { D: 6, end: 3 },
-	D: { end: 1 },
-	end: {},
-};
-
-let shortestDistanceNode = (distances, visited) => {
+const shortestDistanceNode = (distances, visited) => {
 	let shortest = null;
 
 	for (let node in distances) {
@@ -20,7 +11,7 @@ let shortestDistanceNode = (distances, visited) => {
 	return shortest;
 };
 
-let findShortestPathWithLogs = (graph, startNode, endNode) => {
+const findShortestPathWithLogs = (graph, startNode, endNode) => {
 	// establish object for recording distances from the start node
 	let distances = {};
 	distances[endNode] = "Infinity";
@@ -51,8 +42,8 @@ let findShortestPathWithLogs = (graph, startNode, endNode) => {
 				continue;
 			} else {
 				console.log("startNode: " + startNode);
-				console.log("distance from node " + n + " to node " + node + ")");
-				console.log("previous distance: " + distances[n]);
+				console.log("distance from node " + parents[node] + " to node " + node + ")");
+				console.log("previous distance: " + distances[node]);
 				// save the distance from the start node to the child node
 				let newdistance = distance + children[child];
 				console.log("new distance: " + newdistance);
@@ -93,3 +84,5 @@ let findShortestPathWithLogs = (graph, startNode, endNode) => {
 
 	return results;
 };
+
+module.exports = findShortestPathWithLogs;
