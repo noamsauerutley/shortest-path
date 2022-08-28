@@ -34,21 +34,26 @@ const findShortestPath = (graph, startNode, endNode) => {
 		// find its distance from the start node & its child nodes
 		let distance = distances[node];
 		let children = graph[node];
-		// for each of those child nodes
-		for (let child in children) {
-			// make sure each child node is not the start node
-			if (String(child) === String(startNode)) {
-				continue;
-			} else {
-				// save the distance from the start node to the child node
-				let newdistance = distance + children[child];
-				// if there's no recorded distance from the start node to the child node in the distances object
-				// or if the recorded distance is shorter than the previously stored distance from the start node to the child node
-				// save the distance to the object
-				// record the path
-				if (!distances[child] || distances[child] > newdistance) {
-					distances[child] = newdistance;
-					parents[child] = node;
+
+		// if already a end distance is found, we allow only ways which are shorter
+		if (!distances[endNode] || distances[endNode] > distance) {
+			// for each of those child nodes
+			for (let child in children) {
+				// make sure each child node is not the start node
+				if (String(child) === String(startNode)) {
+					continue;
+				} else {
+					// save the distance from the start node to the child node
+					let newdistance = distance + children[child];
+					// if there's no recorded distance from the start node to the child node in the distances object
+					// or if the recorded distance is shorter than the previously stored distance from the start node to the child node
+					// save the distance to the object but if already a end distance is found, it must be shorter then it
+					// record the path
+					if ((!distances[child] || distances[child] > newdistance)
+						&& (!distances[endNode] || distances[endNode] > newdistance)) {
+						distances[child] = newdistance;
+						parents[child] = node;
+					}
 				}
 			}
 		}
