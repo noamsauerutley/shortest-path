@@ -23,6 +23,6 @@
 	"homepage": "https://github.com/noamsauerutley/shortest-path#readme",
 	"devDependencies": {
 		"jest": "^25.2.3",
-		"nodemon": "^2.0.3"
+		"nodemon": "^2.0.20"
 	}
 }
